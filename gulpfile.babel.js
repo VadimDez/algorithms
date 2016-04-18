@@ -4,7 +4,17 @@
 "use strict";
 
 import gulp from 'gulp';
+import jasmine from 'gulp-jasmine';
 
-gulp.task('default', () => {
-  
+const jsPath = './src/**/*.js';
+
+gulp.task('test', () => {
+  gulp.src(jsPath)
+    .pipe(jasmine({
+      errorOnFail: false
+    }));
+});
+
+gulp.task('default', ['test'], () => {
+  gulp.watch(jsPath, ['test']);
 });

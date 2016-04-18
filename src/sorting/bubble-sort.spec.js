@@ -8,6 +8,7 @@ describe('bubble-sort', () => {
   it('should sort elements', () => {
     expect([1, 2, 3]).toEqual(BubbleSort.sort([3, 2, 1]));
     expect([1, 2, 3, 4]).toEqual(BubbleSort.sort([3, 1, 2, 4]));
+    expect([1, 2, 3, 4, 5]).toEqual(BubbleSort.sort([2, 1, 5, 4, 3]));
   });
 
   it('should sort 1 element', () => {

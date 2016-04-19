@@ -10,18 +10,16 @@ export default class BubbleSort {
    * @returns {*}
    */
   static sort(array, comparer = null) {
-    comparer = comparer || this.compare;
     let length = array.length;
-    let tmp;
     let change;
+    comparer = comparer || this.compare;
 
     do {
       change = false;
       for (let i = 1; i < length; i++) {
         if (comparer(array[i - 1], array[i])) {
-          tmp = array[i - 1];
-          array[i - 1] = array[i];
-          array[i] = tmp;
+
+          [array[i - 1], array[i]] = [array[i], array[i - 1]];
 
           change = true;
         }

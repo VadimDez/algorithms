@@ -29,4 +29,23 @@ describe('merge-sort', () => {
 
     expect([1, 1, 2, 2]).toEqual(MergeSort.sort([1, 2, 2, 1]));
   });
+
+
+  it('should sort with custom comparing function', () => {
+    expect(MergeSort.sort([
+      {value: 4},
+      {value: 3},
+      {value: 2},
+      {value: 1},
+      {value: 5}
+    ], (a, b) => {
+      return a.value > b.value;
+    })).toEqual([
+      {value: 1},
+      {value: 2},
+      {value: 3},
+      {value: 4},
+      {value: 5}
+    ]);
+  });
 });

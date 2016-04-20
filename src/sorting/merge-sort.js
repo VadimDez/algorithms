@@ -3,9 +3,10 @@
  */
 
 export default class MergeSort {
-  static sort(array) {
+  static sort(array, comparer) {
     let middle;
     const length = array.length;
+    this.tmpComparer = comparer || this.comparer;
 
     if (length < 2) {
       return array;
@@ -15,8 +16,8 @@ export default class MergeSort {
 
     return this.merge(
       [],
-      this.sort(array.slice(0, middle)),
-      this.sort(array.slice(middle))
+      this.sort(array.slice(0, middle), this.tmpComparer),
+      this.sort(array.slice(middle), this.tmpComparer)
     );
   }
 
@@ -29,9 +30,13 @@ export default class MergeSort {
       return array.concat(b);
     }
 
-    if (a[0] < b[0]) {
-      return this.merge(array.concat(a[0]), a.slice(1), b);
+    if (this.tmpComparer(a[0], b[0])) {
+      return this.merge(array.concat(b[0]), a, b.slice(1));
     }
-    return this.merge(array.concat(b[0]), a, b.slice(1));
+    return this.merge(array.concat(a[0]), a.slice(1), b);
+  }
+
+  static comparer(a, b) {
+    return a > b;
   }
 }

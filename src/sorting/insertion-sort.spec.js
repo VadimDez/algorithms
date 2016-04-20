@@ -18,28 +18,28 @@ describe('insertion sort', () => {
   });
 
   it('should sort multiple elements', () => {
-    expect([1, 2]).toEqual(InsertionSort.sort([2, 1]));
+    expect(InsertionSort.sort([2, 1])).toEqual([1, 2]);
 
-    expect([1, 2, 3, 4, 5]).toEqual(InsertionSort.sort([2, 1, 5, 4, 3]));
+    expect(InsertionSort.sort([2, 1, 5, 4, 3])).toEqual([1, 2, 3, 4, 5]);
 
-    expect([-5, -4, 0, 1, 2, 3, 4, 5]).toEqual(InsertionSort.sort([2, 1, 5, 4, 3, 0, -5, -4]));
+    expect(InsertionSort.sort([2, 1, 5, 4, 3, 0, -5, -4])).toEqual([-5, -4, 0, 1, 2, 3, 4, 5]);
 
-    expect([1, 1, 2, 2]).toEqual(InsertionSort.sort([1, 2, 2, 1]));
+    expect(InsertionSort.sort([1, 2, 2, 1])).toEqual([1, 1, 2, 2]);
   });
 
   it('should sort with custom comparing function', () => {
-    expect([
-      {value: 1},
-      {value: 2},
-      {value: 3},
-      {value: 4}
-    ]).toEqual(InsertionSort.sort([
+    expect(InsertionSort.sort([
       {value: 4},
       {value: 3},
       {value: 2},
       {value: 1}
     ], (a, b) => {
       return a.value > b.value;
-    }));
+    })).toEqual([
+      {value: 1},
+      {value: 2},
+      {value: 3},
+      {value: 4}
+    ]);
   });
 });

@@ -10,24 +10,24 @@ describe('merge-sort', () => {
   });
 
   it('should sort empty array', () => {
-    expect([]).toEqual(MergeSort.sort([]));
+    expect(MergeSort.sort([])).toEqual([]);
   });
 
   it('should sort one element', () => {
-    expect([1]).toEqual(MergeSort.sort([1]));
+    expect(MergeSort.sort([1])).toEqual([1]);
   });
 
 
   it('should sort elements', () => {
-    expect([1, 2]).toEqual(MergeSort.sort([2, 1]));
+    expect(MergeSort.sort([2, 1])).toEqual([1, 2]);
 
-    expect([1, 2, 3]).toEqual(MergeSort.sort([2, 3, 1]));
+    expect(MergeSort.sort([2, 3, 1])).toEqual([1, 2, 3]);
 
-    expect([1, 2, 3, 4, 5]).toEqual(MergeSort.sort([2, 1, 5, 4, 3]));
+    expect(MergeSort.sort([2, 1, 5, 4, 3])).toEqual([1, 2, 3, 4, 5]);
 
-    expect([-5, -4, 0, 1, 2, 3, 4, 5]).toEqual(MergeSort.sort([2, 1, 5, 4, 3, 0, -5, -4]));
+    expect(MergeSort.sort([2, 1, 5, 4, 3, 0, -5, -4])).toEqual([-5, -4, 0, 1, 2, 3, 4, 5]);
 
-    expect([1, 1, 2, 2]).toEqual(MergeSort.sort([1, 2, 2, 1]));
+    expect(MergeSort.sort([1, 2, 2, 1])).toEqual([1, 1, 2, 2]);
   });
 
 

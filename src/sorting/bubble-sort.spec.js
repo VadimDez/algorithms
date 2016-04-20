@@ -6,42 +6,42 @@ import BubbleSort from './bubble-sort';
 
 describe('bubble-sort', () => {
   it('should sort elements', () => {
-    expect([1, 2, 3]).toEqual(BubbleSort.sort([3, 2, 1]));
-    expect([1, 2, 3, 4]).toEqual(BubbleSort.sort([3, 1, 2, 4]));
-    expect([1, 2, 3, 4, 5]).toEqual(BubbleSort.sort([2, 1, 5, 4, 3]));
+    expect(BubbleSort.sort([3, 2, 1])).toEqual([1, 2, 3]);
+    expect(BubbleSort.sort([3, 1, 2, 4])).toEqual([1, 2, 3, 4]);
+    expect(BubbleSort.sort([2, 1, 5, 4, 3])).toEqual([1, 2, 3, 4, 5]);
   });
 
   it('should sort 1 element', () => {
-    expect([1]).toEqual(BubbleSort.sort([1]));
+    expect(BubbleSort.sort([1])).toEqual([1]);
   });
 
   it('should sort no elements', () => {
-    expect([]).toEqual(BubbleSort.sort([]));
+    expect(BubbleSort.sort([])).toEqual([]);
   });
 
   it('should sort duplicates', () => {
-    expect([1, 1, 2, 2]).toEqual(BubbleSort.sort([2, 1, 2, 1]));
+    expect(BubbleSort.sort([2, 1, 2, 1])).toEqual([1, 1, 2, 2]);
   });
 
   it('should sort negative values', () => {
-    expect([-2, -1, 0, 2]).toEqual(BubbleSort.sort([0, 2, -2, -1]));
+    expect(BubbleSort.sort([0, 2, -2, -1])).toEqual([-2, -1, 0, 2]);
   });
 
   it('should sort with custom compare function', () => {
-    expect(['a', 'b', 'c']).toEqual(BubbleSort.sort(['c', 'a', 'b'], (a, b) => {
+    expect(BubbleSort.sort(['c', 'a', 'b'], (a, b) => {
       return a > b;
-    }));
+    })).toEqual(['a', 'b', 'c']);
 
-    expect([
-      {value: 1},
-      {value: 2},
-      {value: 3}
-    ]).toEqual(BubbleSort.sort([
+    expect(BubbleSort.sort([
       {value: 3},
       {value: 1},
       {value: 2}
     ], (a, b) => {
       return a.value > b.value;
-    }));
+    })).toEqual([
+      {value: 1},
+      {value: 2},
+      {value: 3}
+    ]);
   })
 });

@@ -3,14 +3,15 @@
  */
 
 export default class SelectionSort {
-  static sort(array) {
-    const length = array.length;
+  static sort(array, comparer) {
     let tmpIndex;
+    const length = array.length;
+    comparer = comparer || this.comparer;
 
     for (let i = 0; i < length - 1; i++) {
       tmpIndex = i;
       for (let c = i + 1; c < length; c++) {
-        if (array[tmpIndex] > array[c]) {
+        if (comparer(array[tmpIndex],array[c])) {
           tmpIndex = c;
         }
       }
@@ -18,5 +19,9 @@ export default class SelectionSort {
     }
 
     return array;
+  }
+
+  static comparer(a, b) {
+    return a > b;
   }
 }

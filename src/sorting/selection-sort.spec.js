@@ -22,4 +22,20 @@ describe('selection sort', () => {
 
     expect([1, 1, 2, 2]).toEqual(SelectionSort.sort([1, 2, 2, 1]));
   });
+
+  it('should sort elements with custom comparing function', () => {
+    expect([
+      {value: 1},
+      {value: 2},
+      {value: 3},
+      {value: 4}
+    ]).toEqual(SelectionSort.sort([
+      {value: 4},
+      {value: 3},
+      {value: 2},
+      {value: 1}
+    ], (a, b) => {
+      return a.value > b.value;
+    }));
+  });
 });

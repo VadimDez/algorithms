@@ -40,6 +40,6 @@ describe('insertion sort', () => {
       {value: 1}
     ], (a, b) => {
       return a.value > b.value;
-    }))
+    }));
   });
 });

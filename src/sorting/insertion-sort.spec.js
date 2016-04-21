@@ -6,15 +6,15 @@ import InsertionSort from './insertion-sort';
 
 describe('insertion sort', () => {
   it('should have sort method', () => {
-    expect('function').toBe(typeof InsertionSort.sort);
+    expect(typeof InsertionSort.sort).toBe('function');
   });
 
   it('should sort empty array', () => {
-    expect([]).toEqual(InsertionSort.sort([]));
+    expect(InsertionSort.sort([])).toEqual([]);
   });
 
   it('should sort array with one element', () => {
-    expect([0]).toEqual(InsertionSort.sort([0]));
+    expect(InsertionSort.sort([0])).toEqual([0]);
   });
 
   it('should sort multiple elements', () => {

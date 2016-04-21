@@ -6,7 +6,7 @@ import MergeSort from './merge-sort';
 
 describe('merge-sort', () => {
   it('should have have sort method', () => {
-    expect('function').toBe(typeof MergeSort.sort);
+    expect(typeof MergeSort.sort).toBe('function');
   });
 
   it('should sort empty array', () => {

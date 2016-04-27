@@ -32,7 +32,7 @@ describe('heap', () => {
   it('should create heap from array', () => {
     let heap = new Heap([1, 2, 3, 5, 10]);
 
-    expect(heap.getArray()).toEqual([10, 5, 2, 1, 3]);
+    expect(heap.getArray()).toEqual([10, 5, 3, 1, 2]);
   });
 
   it('should find max', () => {
@@ -69,6 +69,12 @@ describe('heap', () => {
 
     expect(heap.deleteMax()).toBe(10);
     expect(heap.size()).toBe(4);
-    expect(heap.getArray()).toEqual([5,3, 2, 1]);
+    expect(heap.getArray()).toEqual([5, 2, 3, 1]);
+    expect(heap.deleteMax()).toBe(5);
+    expect(heap.getArray()).toEqual([3, 2, 1]);
+  });
+
+  it('should heapify', () => {
+    expect(Heap.heapify([2, 3, 1], 0)).toEqual([3, 2, 1]);
   });
 });

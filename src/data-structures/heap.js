@@ -5,10 +5,10 @@
 export default class Heap {
 
   constructor(array = []) {
-    this.heap = [];
+    this.heap = array;
 
-    for (let i = 0; i < array.length; i++) {
-      this.insert(array[i]);
+    for (let i = Math.floor(array.length / 2); i >= 0; i--) {
+      this.heap = this.constructor.heapify(this.heap, i);
     }
   }
 
@@ -97,20 +97,25 @@ export default class Heap {
     this.heap[this.size() - 1] = null;
     this.heap.length--;
 
-    this.heapify();
+    this.heap = this.constructor.heapify(this.heap, 0);
 
     return max;
   }
 
-  heapify() {
-    const size = this.size();
-    for(let i = 0; i < size; i++) {
+  static heapify(array, index) {
+    let left = 2 * index + 1;
+    let right = 2 * index + 2;
+    let largest = (left < array.length && array[left] > array[index]) ? left : index;
 
-      const highestChild = 2 * i + 1 + ((this.heap[2 * i + 1] > this.heap[2 * i + 2]) ? 0 : 1);
-
-      if (this.heap[i] < this.heap[highestChild]) {
-        [this.heap[i], this.heap[highestChild]] = [this.heap[highestChild], this.heap[i]];
-      }
+    if (right < array.length && array[right] > array[largest]) {
+      largest = right;
     }
+
+    if (largest !== index) {
+      [array[index], array[largest]] = [array[largest], array[index]];
+      return this.heapify(array, largest);
+    }
+
+    return array;
   }
 }

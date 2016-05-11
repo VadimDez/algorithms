@@ -1,5 +1,7 @@
 # Algorithms
 
+Intended for deep dive in ES2016
+
 ### Sorting Algorithms
 
 * [Bubble sort]()
